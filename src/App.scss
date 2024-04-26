@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 * {
     margin: 0;
     padding: 0;
-
+    font-family: 'Poppins', sans-serif;
 }
 
 body{
@@ -26,9 +27,32 @@ body{
         position: absolute;
         opacity: 0;
     }
+    
+    &__sun{
+        position: absolute;
+        font-size: 3em;
+        color: #666;
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+        transform: scale(0);
+        transition: 1s ease;
+    }
 
-    &__check:checked~.dark-mode__toggle{
-        background: #f8f8f8;
+    &__check:checked~.dark-mode__sun{
+        transition-delay: .8s;
+        transform: scale(1) rotate(360deg);
+    }
+
+    &__moon{
+        font-size: 3em;
+        color: #666;
+        filter: drop-shadow(0 0 2px rgba(0, 0, 0, .5));
+        transition: 1s ease;
+        transition-delay: .8s;
+    }
+
+    &__check:checked~.dark-mode__moon{
+        transition-delay: 0s;
+        transform: rotate(360deg) scale(0);
     }
 
 
@@ -44,7 +68,11 @@ body{
             inset 0 -4px 4px rgba(0, 0, 0, .1);
         z-index: -1;
         transition: 1s;
-    }    
+    }
+
+    &__check:checked~.dark-mode__toggle{
+        background: #f8f8f8;
+    }
     
     &__bg{
         position: absolute;
@@ -57,6 +85,6 @@ body{
     }
 
     &__check:checked~.dark-mode__bg{
-        clip-path: circle(150% at 50% 50%);
+        clip-path: circle(100% at 50% 50%);
     }
 }
